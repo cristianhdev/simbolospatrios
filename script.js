@@ -15,7 +15,7 @@ function init() {
         cargaPageFlip()
         document.querySelector('.spinner').classList.add('hidden')
         document.querySelector('.flipbook-viewport').classList.remove('hidden')
-        
+
     }, 999);
 
 }
@@ -50,37 +50,39 @@ function cargaPageFlip() {
 
     });
 
- 
-    
 
-    
-    
+
+
+
+
 
     let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-     if (!isMobile) {
-        
-     }else{
-         /* $(".flipbook").turn({width:640, height:623}); */
-         $(flippage).turn('display', 'single');
-         $(flippage).turn('size',  400, 635);
-         $(flippage).turn('resize')
-       
-     }
+    if (!isMobile) {
 
-     $(flippage).bind('turning', (event, page, view) => {
-       
+    } else {
+        /* $(".flipbook").turn({width:640, height:623}); */
+        $(flippage).turn('display', 'single');
+        $(flippage).turn('size', 400, 635);
+        $(flippage).turn('resize')
+
+    }
+
+    $(flippage).bind('turning', (event, page, view) => {
+
         audiopage.playAudio()
+        if (elementoActualSound != null) {
+            audioHimno.stopAudio()
+            document.querySelector(elementoActualSound).removeEventListener('click', stopSonido, false)
+            document.querySelector(elementoActualSound).addEventListener('click', playSonido, false)
+            document.querySelector(elementoActualSound).classList.add('botonPlay')
+            document.querySelector(elementoActualSound).classList.remove('botonPause')
+
+        }
+
     })
 
     $(flippage).bind('turned', (event, page, view) => {
-        switch (page) {
-            case 2:
-                break;
-
-            default:
-                break;
-        }
-
+        
     })
 
 
@@ -114,7 +116,7 @@ function playSonido(id) {
 }
 
 function verificarFinAudio() {
-    audioHimno.playAudioFondo()
+    //audioHimno.playAudioFondo()
     document.querySelector(elementoActualSound).classList.remove('botonPause')
     document.querySelector(elementoActualSound).classList.add('botonPlay')
     document.querySelector(elementoActualSound).removeEventListener('click', stopSonido, false)
@@ -188,7 +190,7 @@ function Imprimir(idImagen) {
     setTimeout(() => {
         ventanaPreview.print();
     }, 1200);
-    
+
 
 }
 
@@ -238,12 +240,4 @@ function OcultarVideo() {
     modal.style.display = "none";
 }
 
-function ReproducirVideo(e) {
-    video.play()
-    document.querySelector('#videoOthers').classList.add("disabledbutton")
-    video.addEventListener('ended', function (e) {
 
-        document.querySelector('#videoOthers').classList.remove("disabledbutton")
-
-    })
-}

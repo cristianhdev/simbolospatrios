@@ -55,12 +55,16 @@
     
   
     stopAudio() {
-        this.audio.muted = !this.audio.muted;
         this.audio.currentTime = 0;
+        this.audio.muted = !this.audio.muted;
+        this.audio.pause()
+     
         /* this.audio.currentTime = 0
         this.audio.muted = true;
         alert(this.audio.muted) */
     }
+
+
 
     pauseAudio() {
         this.audio.pause()

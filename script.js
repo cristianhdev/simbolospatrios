@@ -15,22 +15,8 @@ function init() {
         cargaPageFlip()
         document.querySelector('.spinner').classList.add('hidden')
         document.querySelector('.flipbook-viewport').classList.remove('hidden')
-        /* let el = document.querySelector('#Bandera02');
-         myAnimation= new LazyLinePainter(el, { "ease": "easeInOutQuad", "strokeWidth": 1.1, "strokeOpacity": 0.5, "strokeColor": "#000000", "strokeCap": "square" }); */
+        
     }, 999);
-    
-
-    // Load the HTML4 version if there's not CSS transform
-
-    /* yepnope({
-        test: Modernizr.csstransforms,
-        yep: ['../../lib/turn.js'],
-        nope: ['../../lib/turn.html4.min.js'],
-        both: ['css/basic.css'],
-        complete: cargaPageFlip
-    }); */
-
-    
 
 }
 
@@ -64,30 +50,21 @@ function cargaPageFlip() {
 
     });
 
-    /* window.addEventListener('resize', (e) => {
-        flippage.style.width = '';
-        flippage.style.height = '';
-        $(flippage).turn('size', flippage.clientWidth, flippage.clientHeight);
-        $(flippage).turn({
-            autoCenter: true
-        });
-    }); */
+ 
+    
 
     
     
 
     let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
      if (!isMobile) {
-        /*  $('.flipbook').turn('size', 400, 535); */
-         /* $('.flipbook').turn('resize'); */
+        
      }else{
          /* $(".flipbook").turn({width:640, height:623}); */
          $(flippage).turn('display', 'single');
          $(flippage).turn('size',  400, 635);
          $(flippage).turn('resize')
-        /* $(flippage).turn({
-            autoCenter: true
-        }) */;
+       
      }
 
      $(flippage).bind('turning', (event, page, view) => {
@@ -202,12 +179,16 @@ function Imprimir(idImagen) {
     ventanaPreview.document.write('<body> <h1>Vista previa Impresion<br>');
     ventanaPreview.document.write(`<div id="print"
                                     class="w-full h-[70vh]  flex flex-col mx-auto mt-[10%] text-center justify-center items-center content-center border-2 border-gray-100"  style='background-image:${imagenfondoAplicada};background-repeat: no-repeat;background-size: 100% 100%;background-position: center center;'>
-                                    <img class=" w-90 h-90 object-fit "
+                                    <img class=" w-[85%] h-[85%] object-contain "
                                     src="${base64StringImagen1}" alt="escudo:alt">
                                 </div>`);
     ventanaPreview.document.write('</body></html>');
     ventanaPreview.document.close();
-    ventanaPreview.print();
+
+    setTimeout(() => {
+        ventanaPreview.print();
+    }, 1200);
+    
 
 }
 

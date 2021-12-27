@@ -395,3 +395,39 @@ h6 {
     margin-left:5px !important
   }
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+  /* CSS */
+
+  h1{
+    font-size:1em
+  }
+
+  p{
+    font-size:0.85em
+  }
+
+  .botonPlay {
+    width: 14vw;
+    height: 14vw;
+    background-image: url(./assets/img/BtnPlay.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    cursor: pointer;
+    margin: 0px auto
+  }
+  
+  .botonPause {
+    width: 14vw;
+    height: 14vw;
+  }
+
+  .flipbook-viewport .flipbook {
+  
+    margin-left:4% !important;
+    margin-right:4% !important
+  }
+  
+}

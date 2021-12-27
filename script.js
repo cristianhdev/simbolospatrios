@@ -62,7 +62,13 @@ function cargaPageFlip() {
     } else {
         /* $(".flipbook").turn({width:640, height:623}); */
         $(flippage).turn('display', 'single');
-        $(flippage).turn('size', 400, 635);
+        
+        if(window.innerWidth>320 && window.innerWidth<400){
+            $(flippage).turn('size', 330, 535);
+        }else{
+            $(flippage).turn('size', 400, 635);
+        }
+        
         $(flippage).turn('resize')
 
     }
